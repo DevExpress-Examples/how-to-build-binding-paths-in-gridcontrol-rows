@@ -1,0 +1,64 @@
+﻿<Window
+    x:Class="DXGridSample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:local="clr-namespace:DXGridSample"
+    Name="win"
+    Title="MainWindow"
+    Width="525"
+    Height="350">
+
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+
+    <DockPanel>
+
+        <dxe:CheckEdit Content="Highlight visited" DockPanel.Dock="Top" EditValue="{Binding HighlightVisited, UpdateSourceTrigger=PropertyChanged}" />
+
+        <dxg:GridControl ItemsSource="{Binding Items}">
+
+            <dxg:GridColumn FieldName="Country" />
+
+            <dxg:GridColumn EditSettings="{dxe:PopupColorEditSettings}" FieldName="Color" />
+
+            <dxg:GridColumn EditSettings="{dxe:SpinSettings IsFloatValue=False}" FieldName="Visits" />
+
+            <dxg:GridColumn
+                FieldName="Visited"
+                ShowInColumnChooser="False"
+                UnboundExpression="[Visits] &gt; 0"
+                UnboundType="Boolean"
+                Visible="False" />
+
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" EnableImmediatePosting="True">
+                    <dxg:TableView.RowStyle>
+                        <Style TargetType="dxg:RowControl">
+                            <Style.Triggers>
+                                <Trigger Property="SelectionState" Value="None">
+                                    <!--  bind Background to the Item.Color property  -->
+                                    <Setter Property="Background" Value="{Binding Row.Color, Converter={dxmvvm:ColorToBrushConverter}}" />
+                                </Trigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <!--  obtain ViewModel.HighlightVisited  -->
+                                        <Condition Binding="{Binding View.DataContext.HighlightVisited}" Value="True" />
+                                        <!--  obtain the Visited column value  -->
+                                        <Condition Binding="{Binding DataContext.Visited}" Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="TextElement.FontStyle" Value="Italic" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </dxg:TableView.RowStyle>
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+    </DockPanel>
+
+</Window>
