@@ -35,7 +35,7 @@
                 Visible="False" />
 
             <dxg:GridControl.View>
-                <dxg:TableView AutoWidth="True" EnableImmediatePosting="True">
+                <dxg:TableView AutoWidth="True" EnableImmediatePosting="True" RowDetailsVisibilityMode="VisibleWhenFocused">
                     <dxg:TableView.RowStyle>
                         <Style TargetType="dxg:RowControl">
                             <Style.Triggers>
@@ -51,6 +51,7 @@
                                         <Condition Binding="{Binding DataContext.Visited}" Value="True" />
                                     </MultiDataTrigger.Conditions>
                                     <Setter Property="TextElement.FontStyle" Value="Italic" />
+                                    <Setter Property="TextElement.FontWeight" Value="Bold" />
                                 </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>

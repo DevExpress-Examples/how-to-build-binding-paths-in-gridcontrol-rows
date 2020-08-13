@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using DevExpress.Mvvm;
 using System.Windows.Media;
+using DevExpress.Xpf.Grid;
 
 namespace DXGridSample {
     public partial class MainWindow : Window {
