@@ -29,3 +29,7 @@ The bindings we used in this example work as follows.
     <Setter Property="TextElement.FontWeight" Value="Bold" />
 </MultiDataTrigger>
 ```
+
+**See also:**
+
+[How to build binding paths in GridControl cells](https://github.com/DevExpress-Examples/how-to-build-binding-paths-in-gridcontrol-cells)
