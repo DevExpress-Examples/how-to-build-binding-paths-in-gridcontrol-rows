@@ -1,4 +1,4 @@
-# How to build binding paths in GridControl rows
+# How to build binding paths within WPF Grid control rows 
 
 Row elements contain [RowData](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.RowData) objects in their [DataContext](https://docs.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.datacontext). Use the following binding paths to access cell values and ViewModel properties:
 
