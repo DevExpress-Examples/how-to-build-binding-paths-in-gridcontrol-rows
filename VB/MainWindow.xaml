@@ -6,6 +6,7 @@
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
     xmlns:local="clr-namespace:DXGridSample"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Name="win"
     Title="MainWindow"
     Width="525"
@@ -31,7 +32,7 @@
                 FieldName="Visited"
                 ShowInColumnChooser="False"
                 UnboundExpression="[Visits] &gt; 0"
-                UnboundType="Boolean"
+                UnboundDataType="{x:Type sys:Boolean}"
                 Visible="False" />
 
             <dxg:GridControl.View>
